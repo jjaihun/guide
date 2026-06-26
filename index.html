@@ -260,8 +260,9 @@
       </div>
       <div class="step">
         <div class="dot">3</div>
-        <h4>목표 수익률은 그냥 두기</h4>
-        <p>종목을 고르면 콘솔이 알아서 맞춰줘요 — <strong>TQQQ는 +10%, SOXL은 +12%</strong>. 손댈 필요 없습니다.</p>
+        <h4>목표 수익률 — 기본값 그대로 권장</h4>
+        <p>‘<strong>목표 수익률 (본매도)</strong>’은 종목에 맞는 <strong>규칙 기본값</strong>으로 미리 세팅돼 있어요 — <strong>TQQQ +10%, SOXL +12%</strong>. 원하면 +5%~+20%로 바꾸거나 직접 입력할 수도 있습니다.</p>
+        <div class="do" style="border-left-color:var(--sell);background:var(--sell-soft)"><strong style="color:var(--sell)">⚠️ 올리면 그만큼 위험도 커져요.</strong> 목표를 높이면(예: +15%) 한 사이클이 더 길어지고, <strong>마이너스로 버티는 구간·소진 가능성도 함께 커집니다.</strong> 익숙해지기 전엔 <strong>기본값 그대로</strong> 두는 걸 권합니다.</div>
       </div>
       <div class="step">
         <div class="dot">4</div>
@@ -357,7 +358,7 @@
 
     <div class="note">
       <span class="lbl">카드 수는 그날그날 달라요</span>
-      <p style="margin:0">화면에 <strong>뜬 카드 수만큼만</strong> 걸면 됩니다. 회차 초반(전반전)엔 보통 <strong>4장</strong>이지만, 많이 사 모은 뒤(후반전)엔 매수가 <strong>1장으로 합쳐져</strong> 3장이 되기도 해요. <strong>첫날(가진 게 0)</strong>이면 매도 카드는 없고 <strong>매수만</strong> 나옵니다. 규칙은 하나 — <strong>“뜬 카드를 그대로 다 건다.”</strong></p>
+      <p style="margin:0">화면에 <strong>뜬 카드 수만큼만</strong> 걸면 됩니다. 회차 초반(전반전)엔 보통 <strong>4장</strong>이지만, 많이 사 모은 뒤(후반전)엔 매수가 <strong>1장으로 합쳐져</strong> 3장이 되기도 해요. <strong>가진 게 0일 때(첫날·매도 후 새 사이클)</strong>는 카드 대신 <strong>‘신규 1회차로 사이클 시작’</strong> 안내가 떠요 — 그땐 <strong>1회 매수금만큼 시장가(또는 원하는 가격)로 한 번 사면</strong> 됩니다. 규칙은 하나 — <strong>“화면에 뜬 대로 그대로 한다.”</strong></p>
     </div>
   </section>
 
@@ -421,9 +422,52 @@
     </div>
   </section>
 
-  <!-- 6. 콘솔 -->
+  <!-- 6. 매매기록 -->
   <section>
-    <div class="eyebrow"><div class="num">6</div><h2>콘솔 화면, 이 정도만 보면 돼요</h2></div>
+    <div class="eyebrow"><div class="num">6</div><h2>체결되면 — 매매기록 적기</h2></div>
+    <p class="lead">이게 콘솔을 <strong>편하게</strong> 쓰는 비결이에요. 사고판 걸 한 번만 적으면 <strong>평단가·보유수량·수익을 콘솔이 알아서</strong> 계산해 줍니다. 그래서 매일 평단을 손으로 안 넣어도 돼요.</p>
+
+    <div class="flow">
+      <div class="step">
+        <div class="dot">1</div>
+        <h4>오늘 뭐가 체결됐는지 확인</h4>
+        <p>키움 <strong>‘체결내역’</strong>(또는 잔고)에서 그날 실제로 <strong>사고팔린 주식 수</strong>를 봐요. LOC라서 <strong>아무것도 안 산 날</strong>도 많아요 — 그런 날은 적을 게 없으니 건너뜁니다.</p>
+      </div>
+      <div class="step">
+        <div class="dot">2</div>
+        <h4>콘솔 ‘매매기록’ 펼치기</h4>
+        <p>해당 종목 화면에서 <strong>‘매매기록’</strong>을 누르면 입력칸 네 개가 나와요 — <strong>매수 주 · 매수가($) · 매도 주 · 매도가($)</strong>.</p>
+      </div>
+      <div class="step">
+        <div class="dot">3</div>
+        <h4>체결된 것만 적고 ‘기록 추가’ (이거 하나면 끝)</h4>
+        <p>키움 체결내역에 나온 대로 <strong>산 주식 수와 그 가격(매수가)</strong>, <strong>판 주식 수와 그 가격(매도가)</strong>을 넣고 <strong>‘기록 추가’</strong>를 눌러요. <strong>안 산(판) 칸은 비워두면</strong> 됩니다. 그러면 <strong>평단가·보유수량·회차·오늘 주문까지 한 번에 자동</strong>으로 갱신돼요. 따로 ‘반영’ 버튼을 누를 필요 없어요.</p>
+        <div class="order-card buy" style="margin-top:12px">
+          <div class="head">✍️ 입력 예시 — TQQQ 4주 샀고, 판 건 없는 날</div>
+          <div class="body">
+            <div class="kv"><span class="k">매수 주</span><span class="v b-blue">4</span></div>
+            <div class="kv"><span class="k">매수가 ($)</span><span class="v">164.69</span></div>
+            <div class="kv"><span class="k">매도 주 · 매도가</span><span class="v" style="font-weight:400;color:var(--ink-soft)">비워둠</span></div>
+          </div>
+        </div>
+        <div class="do">‘현재 포지션에 반영’ 버튼은 평단·보유를 손으로 직접 고친 뒤 <strong>기록값으로 되돌릴 때만</strong> 쓰는 보조 버튼이에요. 평소엔 안 눌러도 됩니다.</div>
+      </div>
+      <div class="step">
+        <div class="dot">4</div>
+        <h4>‘누적 실현손익’으로 번 돈 확인</h4>
+        <p>익절(매도)로 실제 챙긴 돈이 <strong>‘누적 실현손익’</strong>에 쌓여요. 지금까지 얼마 벌었는지 여기서 한눈에 봅니다.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="lbl">습관 들이기</span>
+      <p style="margin:0">매일 주문 걸기 전에 <strong>“어제 산 거 기록 추가 → 오늘 주문”</strong> 순서로 하면 평단·보유수량이 늘 최신이라 안 헷갈려요. 매매기록이 귀찮으면 안 써도 되지만, 그러면 매일 키움 잔고의 평단·수량을 직접 콘솔에 넣어야 합니다.</p>
+    </div>
+  </section>
+
+  <!-- 7. 콘솔 -->
+  <section>
+    <div class="eyebrow"><div class="num">7</div><h2>콘솔 화면, 이 정도만 보면 돼요</h2></div>
     <ul class="dot">
       <li><strong>★ 별지점</strong> — 오늘 사고팔 기준 가격. (자동 계산됨)</li>
       <li><strong>매수가 · 매수 수량</strong> — 키움에 LOC로 넣을 값.</li>
@@ -437,9 +481,9 @@
     </div>
   </section>
 
-  <!-- 7. 안전수칙 -->
+  <!-- 8. 안전수칙 -->
   <section>
-    <div class="eyebrow"><div class="num">7</div><h2>이것만은 꼭 — 안전 수칙</h2></div>
+    <div class="eyebrow"><div class="num">8</div><h2>이것만은 꼭 — 안전 수칙</h2></div>
     <div class="warn">
       <span class="lbl">절대 하지 말 것</span>
       <ul class="dot" style="margin:6px 0 0">
@@ -451,9 +495,9 @@
     <p style="font-size:15px;color:var(--ink-soft)">TQQQ·SOXL은 3배로 움직이는 종목이라, 시장이 길게 내리면 <strong>40번을 다 사 모은 뒤에도 한동안 마이너스</strong>일 수 있어요(이걸 ‘소진’이라고 해요). 그래도 당황하지 말고 <strong>콘솔이 시키는 대로</strong>만 하면 됩니다. 이 방법은 천천히 회복하며 이익을 쌓는 구조예요. 한 방을 노리는 게 아니라, <strong>꾸준함으로 이기는 방법</strong>입니다.</p>
   </section>
 
-  <!-- 8. FAQ -->
+  <!-- 9. FAQ -->
   <section style="border-bottom:none">
-    <div class="eyebrow"><div class="num">8</div><h2>자주 묻는 질문</h2></div>
+    <div class="eyebrow"><div class="num">9</div><h2>자주 묻는 질문</h2></div>
 
     <details>
       <summary>매일 꼭 해야 하나요? 하루 빼먹으면요?</summary>
@@ -473,13 +517,13 @@
     </details>
     <details>
       <summary>한 사이클이 끝나면(다 팔리면) 어떻게 해요?</summary>
-      <div class="ans">축하해요, 이익을 챙긴 거예요. 그럼 처음 ‘첫날’ 상태로 돌아가서 다시 1회분부터 사 모으기 시작하면 됩니다. 이 반복이 무한매수예요.</div>
+      <div class="ans">축하해요, 이익을 챙긴 거예요. 다음 날 콘솔에 <strong>‘신규 1회차로 사이클 시작’</strong> 안내가 뜨면, <strong>1회 매수금만큼 시장가(또는 원하는 가격)로 한 번</strong> 사서 새로 시작하면 됩니다. 그다음 날부터 다시 평소 카드(매수 2·매도 2)가 나와요. 이 반복이 무한매수예요.</div>
     </details>
   </section>
 
   <footer class="footer">
     <p><strong>이 설명서는 ‘무한매수 콘솔’과 함께 쓰는 개인용 안내서입니다.</strong> 무한매수법은 라오어님이 공개한 방법론(V2.2)을 따른 것이며, 이 글은 본인 운용을 돕기 위한 정리입니다.</p>
-    <p>모든 투자는 원금 손실이 생길 수 있고, 최종 판단과 책임은 투자자 본인에게 있습니다. 이 자료는 투자 권유나 금융 자문이 아닙니다. 헷갈릴 땐 혼자 끙끙대지 말고 남편에게 물어보세요. 천천히, 규칙대로. ★</p>
+    <p>모든 투자는 원금 손실이 생길 수 있고, 최종 판단과 책임은 투자자 본인에게 있습니다. 이 자료는 투자 권유나 금융 자문이 아닙니다. 헷갈릴 땐 혼자 끙끙대지 말고 짜이훈에게 물어보세요. 천천히, 규칙대로. ★</p>
   </footer>
 
 </div>
