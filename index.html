@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>무한매수 쉬운 설명서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF8F1;
+    --paper-2:#F4EEE2;
+    --ink:#1C2333;
+    --ink-soft:#46506A;
+    --line:#E3DACA;
+    --gold:#B8881F;
+    --gold-soft:#F3E6C4;
+    --buy:#1B5FC4;
+    --buy-soft:#E5EEFA;
+    --sell:#C0392B;
+    --sell-soft:#FBE9E6;
+    --navy:#22304F;
+    --shadow:0 1px 0 rgba(0,0,0,.03), 0 8px 24px -16px rgba(28,35,51,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nanum Gothic',-apple-system,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:54px 0 38px;
+    border-bottom:2px solid var(--ink);
+    position:relative;
+  }
+  .kicker{
+    font-size:13px;letter-spacing:.18em;font-weight:700;
+    color:var(--gold);text-transform:uppercase;margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .kicker::before{content:"★";font-size:15px}
+  .hero h1{
+    font-family:'Nanum Myeongjo',serif;font-weight:800;
+    font-size:clamp(30px,7vw,46px);line-height:1.25;letter-spacing:-.01em;
+    margin-bottom:18px;
+  }
+  .hero h1 .hl{color:var(--gold)}
+  .hero p{font-size:17px;color:var(--ink-soft);max-width:60ch}
+  .hero .meta{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .tag{
+    font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;
+    background:var(--paper-2);color:var(--navy);border:1px solid var(--line);
+  }
+  .tag.gold{background:var(--gold-soft);border-color:#E6D5A6;color:#7A5A0E}
+
+  /* ---------- SECTION ---------- */
+  section{padding:46px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{
+    display:flex;align-items:baseline;gap:14px;margin-bottom:22px;
+  }
+  .eyebrow .num{
+    font-family:'Nanum Myeongjo',serif;font-weight:800;font-size:15px;
+    color:#fff;background:var(--ink);min-width:34px;height:34px;
+    display:flex;align-items:center;justify-content:center;border-radius:9px;
+    flex-shrink:0;
+  }
+  .eyebrow h2{
+    font-family:'Nanum Myeongjo',serif;font-weight:800;
+    font-size:clamp(21px,4.5vw,27px);line-height:1.3;letter-spacing:-.01em;
+  }
+  .lead{font-size:16.5px;color:var(--ink-soft);margin-bottom:8px}
+  p{margin-bottom:14px}
+  strong{font-weight:800}
+  .b-blue{color:var(--buy)}
+  .b-red{color:var(--sell)}
+
+  /* ---------- CALLOUT / CARD ---------- */
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px;box-shadow:var(--shadow);margin:18px 0;
+  }
+  .note{
+    background:var(--gold-soft);border:1px solid #E6D5A6;border-radius:14px;
+    padding:16px 18px;margin:18px 0;font-size:15px;color:#6B5210;
+  }
+  .note strong{color:#5A4408}
+  .note .lbl{
+    display:inline-block;font-weight:800;font-size:12px;letter-spacing:.06em;
+    color:#fff;background:var(--gold);padding:2px 9px;border-radius:6px;margin-bottom:8px;
+  }
+  .warn{
+    background:var(--sell-soft);border:1px solid #F2C9C3;border-radius:14px;
+    padding:16px 18px;margin:18px 0;font-size:15px;color:#7E261B;
+  }
+  .warn .lbl{
+    display:inline-block;font-weight:800;font-size:12px;letter-spacing:.06em;
+    color:#fff;background:var(--sell);padding:2px 9px;border-radius:6px;margin-bottom:8px;
+  }
+
+  /* ---------- ANALOGY GRID ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+  @media(max-width:560px){.grid2{grid-template-columns:1fr}}
+  .mini{
+    background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;
+  }
+  .mini h4{font-size:16px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .mini .ic{font-size:20px}
+  .mini p{font-size:14.5px;color:var(--ink-soft);margin:0}
+
+  /* ---------- PRINCIPLE ---------- */
+  .principle{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px dashed var(--line)}
+  .principle:last-child{border-bottom:none}
+  .principle .p-no{
+    font-family:'Nanum Myeongjo',serif;font-weight:800;font-size:26px;color:var(--gold);
+    min-width:38px;line-height:1.1;
+  }
+  .principle h4{font-size:17px;font-weight:800;margin-bottom:4px}
+  .principle p{font-size:15px;color:var(--ink-soft);margin:0}
+
+  /* ---------- ROUTINE TIMELINE ---------- */
+  .flow{position:relative;margin:24px 0 4px;padding-left:8px}
+  .step{
+    position:relative;padding:0 0 26px 56px;
+  }
+  .step:last-child{padding-bottom:0}
+  .step::before{
+    content:"";position:absolute;left:18px;top:6px;bottom:-6px;width:2px;background:var(--line);
+  }
+  .step:last-child::before{display:none}
+  .step .dot{
+    position:absolute;left:0;top:0;width:38px;height:38px;border-radius:50%;
+    background:var(--ink);color:#fff;font-family:'Nanum Myeongjo',serif;font-weight:800;
+    display:flex;align-items:center;justify-content:center;font-size:16px;z-index:1;
+  }
+  .step h4{font-size:17px;font-weight:800;margin-bottom:6px;padding-top:5px}
+  .step p{font-size:15px;color:var(--ink-soft);margin-bottom:8px}
+  .step .do{
+    background:var(--paper-2);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;
+    padding:10px 14px;font-size:14.5px;color:var(--navy);
+  }
+
+  /* ---------- ORDER TABLE ---------- */
+  .order-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:18px 0;box-shadow:var(--shadow)}
+  .order-card .head{padding:14px 18px;font-weight:800;font-size:15px;color:#fff;display:flex;align-items:center;gap:8px}
+  .order-card.buy .head{background:var(--buy)}
+  .order-card.sell .head{background:var(--sell)}
+  .order-card .body{padding:16px 18px}
+  .kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px}
+  .kv:last-child{border-bottom:none}
+  .kv .k{color:var(--ink-soft);font-weight:700}
+  .kv .v{font-weight:800;text-align:right}
+  .kv .v small{display:block;font-weight:400;color:var(--ink-soft);font-size:12.5px}
+
+  /* ---------- FAQ ---------- */
+  details{background:#fff;border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden}
+  summary{padding:15px 18px;font-weight:800;font-size:15.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:22px;color:var(--gold);font-weight:400;line-height:1}
+  details[open] summary::after{content:"−"}
+  details .ans{padding:0 18px 16px;font-size:15px;color:var(--ink-soft)}
+
+  /* ---------- CHECKLIST ---------- */
+  .check{list-style:none;margin:8px 0}
+  .check li{padding:9px 0 9px 32px;position:relative;font-size:15px;border-bottom:1px dashed var(--line)}
+  .check li:last-child{border-bottom:none}
+  .check li::before{content:"✓";position:absolute;left:4px;top:9px;color:var(--gold);font-weight:800}
+
+  ul.dot{list-style:none;margin:6px 0 14px}
+  ul.dot li{padding:5px 0 5px 20px;position:relative;font-size:15px;color:var(--ink-soft)}
+  ul.dot li::before{content:"";position:absolute;left:4px;top:14px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  ul.dot li strong{color:var(--ink)}
+
+  .footer{padding:34px 0 0;font-size:13px;color:#8A8472;line-height:1.7}
+  .footer strong{color:#6B6557}
+
+  /* print */
+  @media print{
+    body{background:#fff;font-size:12px}
+    .wrap{max-width:100%}
+    section{padding:22px 0;break-inside:avoid}
+    .card,.order-card,details,.step{box-shadow:none;break-inside:avoid}
+    .hero{padding:20px 0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="kicker">남편이 만든 콘솔과 함께 쓰는 설명서</div>
+    <h1>주식 하나도 몰라도 괜찮아요.<br><span class="hl">★ 별</span> 보고 따라 하면 됩니다.</h1>
+    <p>매일 정해진 순서대로 클릭만 하면 되는 방법이에요. 어렵게 계산하는 건 <strong>콘솔</strong>이 다 해주고, 당신은 그 숫자를 키움에 그대로 옮겨 적기만 하면 됩니다.</p>
+    <div class="meta">
+      <span class="tag gold">적용 버전 2.2</span>
+      <span class="tag">종목 · TQQQ / SOXL</span>
+      <span class="tag">증권사 · 키움</span>
+      <span class="tag">투자금 · 500만원</span>
+    </div>
+  </header>
+
+  <!-- 1. 개념 -->
+  <section>
+    <div class="eyebrow"><div class="num">1</div><h2>이게 도대체 뭐예요?</h2></div>
+    <p class="lead">한 줄로 말하면 — <strong>“매일 조금씩 사 모으다가, 오르면 팔아서 이익을 챙기는 방법”</strong> 이에요.</p>
+    <p>주식은 언제 오르고 내릴지 아무도 못 맞혀요. 그래서 한 번에 크게 사지 않고, <strong>매일 정해진 금액만큼 나눠서 조금씩</strong> 삽니다. 그러다 가격이 충분히 오르면 <strong>자동으로 팔아서 이익을 남기고</strong>, 다시 처음부터 시작해요. 이걸 계속 반복하는 거예요. 그래서 이름이 “무한매수(끝없이 사 모은다)”입니다.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <h4><span class="ic">🥬</span> 장 보는 것과 비슷해요</h4>
+        <p>배추값이 쌀 때 많이, 비쌀 때 적게 — 그냥 매일 조금씩 사두면 평균 가격이 자연스럽게 맞춰져요. 똑같은 원리예요.</p>
+      </div>
+      <div class="mini">
+        <h4><span class="ic">🤖</span> 감정은 빼고, 규칙대로</h4>
+        <p>“오를 것 같아서”, “무서워서” 같은 기분으로 안 합니다. 정해진 규칙만 기계처럼 지켜요. 그래서 초보자에게 더 안전해요.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="lbl">TQQQ · SOXL 이 뭐예요?</span>
+      <p style="margin:0">둘 다 미국 주식이에요. <strong>TQQQ</strong>는 미국 대표 기술주들, <strong>SOXL</strong>은 반도체 회사들을 묶어둔 상품이에요. 둘 다 <strong>오를 때 3배로 오르고 내릴 때도 3배로 내리는</strong> 활발한 종목이라, 무한매수법처럼 ‘조금씩 나눠 담는’ 방식과 잘 맞습니다. 대신 변동이 큰 만큼 <strong>규칙을 꼭 지켜야</strong> 해요.</p>
+    </div>
+  </section>
+
+  <!-- 2. 준비물 -->
+  <section>
+    <div class="eyebrow"><div class="num">2</div><h2>시작 전, 이것만 준비하세요</h2></div>
+    <ul class="check">
+      <li><strong>키움증권 계좌</strong> — 해외주식 거래가 켜져 있어야 해요. (앱에서 해외주식 거래 신청 → 위험고지 ‘동의’ 한 번)</li>
+      <li><strong>달러로 환전</strong> — 미국 주식은 달러로 사요. 투자금을 미리 달러로 바꿔둡니다. (콘솔/키움이 환율은 자동 계산해 줘요)</li>
+      <li><strong>남편이 만든 콘솔</strong> — 휴대폰에 즐겨찾기/홈 화면에 추가해두면 편해요.</li>
+    </ul>
+
+    <div class="card">
+      <h4 style="font-weight:800;margin-bottom:12px;font-family:'Nanum Myeongjo',serif;font-size:18px">💰 500만원을 어떻게 나눌까요?</h4>
+      <p style="font-size:15px;color:var(--ink-soft);margin-bottom:14px">두 종목을 같이 하니까 <strong>반씩 나눠</strong> 줍니다. 그리고 각 종목은 다시 <strong>40번에 나눠서</strong> 사요. (이걸 ‘40분할’이라고 불러요)</p>
+      <div class="kv"><span class="k">TQQQ에 배정</span><span class="v">250만원</span></div>
+      <div class="kv"><span class="k">SOXL에 배정</span><span class="v">250만원</span></div>
+      <div class="kv"><span class="k">하루에 사는 금액 (한 종목)</span><span class="v">약 62,500원<small>250만원 ÷ 40회</small></span></div>
+    </div>
+    <div class="note">
+      <span class="lbl">계산은 신경 쓰지 마세요</span>
+      <p style="margin:0">위 숫자는 “이런 식으로 나눈다”는 느낌만 보세요. <strong>실제로 ‘오늘 몇 달러짜리를 몇 주 살지’는 콘솔이 다 정해줍니다.</strong> 콘솔에 종목별 원금(250만원)과 분할(40)만 한 번 넣어두면 끝이에요.</p>
+    </div>
+  </section>
+
+  <!-- 3. 원칙 -->
+  <section>
+    <div class="eyebrow"><div class="num">3</div><h2>딱 3가지 원칙만 기억하세요</h2></div>
+    <div class="principle">
+      <div class="p-no">01</div>
+      <div><h4>매일 조금씩 산다</h4><p>한 번에 몰아서 사지 않아요. 매일 정해진 금액만큼만. 떨어져도 계속 사 모으니까 평균 가격이 점점 내려갑니다.</p></div>
+    </div>
+    <div class="principle">
+      <div class="p-no">02</div>
+      <div><h4>충분히 오르면 자동으로 판다</h4><p>이익 구간이 오면 미리 걸어둔 매도 주문으로 팔려요. 욕심내서 더 기다리지 않습니다. 한 사이클 끝나면 또 처음부터.</p></div>
+    </div>
+    <div class="principle">
+      <div class="p-no">03</div>
+      <div><h4>★ 별을 따라간다</h4><p>매일 사고팔 기준이 되는 ‘<strong>별지점</strong>’이라는 가격이 있어요. 이 별이 매일 살짝 바뀌는데, <strong>콘솔이 오늘의 별을 계산해서 알려줘요.</strong> 우리는 별만 따라가면 됩니다.</p></div>
+    </div>
+  </section>
+
+  <!-- 4. 카드 읽는 법 -->
+  <section>
+    <div class="eyebrow"><div class="num">4</div><h2>콘솔에 뜨는 주문 카드 읽는 법</h2></div>
+    <p class="lead">콘솔은 오늘 걸 주문을 <strong>카드</strong>로 보여줘요. 처음에 헷갈리는 건 <strong>매수가 2장, 매도가 2장 — 합쳐서 4장</strong>이 뜬다는 점이에요. 겁먹지 마세요. <strong>뜬 카드를 키움에 그대로 다 걸면</strong> 됩니다.</p>
+
+    <div class="grid2">
+      <div class="mini">
+        <h4><span class="ic">🔵</span> 매수가 2장인 이유</h4>
+        <p>하루치 살 돈을 <strong>‘평단 가격’</strong>과 <strong>‘별지점 가격’</strong> 두 군데에 <strong>절반씩</strong> 나눠서 걸어요. 둘 중 하나만 사질 수도, 둘 다 사질 수도 있어요.</p>
+      </div>
+      <div class="mini">
+        <h4><span class="ic">🔴</span> 매도가 2장인 이유</h4>
+        <p>가진 것의 <strong>1/4은 별지점에서 조금 먼저(쿼터)</strong>, 나머지 <strong>3/4은 +10% 목표가에서 한 번에(본)</strong> 정리해요. ‘본’이 팔리면 한 사이클 끝!</p>
+      </div>
+    </div>
+
+    <p style="font-size:15px;color:var(--ink-soft);margin:18px 0 6px">아래는 콘솔 화면 예시예요. 카드마다 <strong>‘무슨 뜻인지’</strong>와 <strong>‘키움에 어떻게 거는지’</strong>를 붙여뒀습니다. (숫자는 그날그날 바뀝니다)</p>
+
+    <div class="order-card buy">
+      <div class="head">🔵 매수 ① · 평단</div>
+      <div class="body">
+        <div class="kv"><span class="k">가격 · 수량</span><span class="v b-blue">$150.00 · 2주</span></div>
+        <div class="kv"><span class="k">무슨 뜻</span><span class="v" style="font-weight:400;color:var(--ink-soft)">1회분의 <strong style="color:var(--ink)">절반</strong>을 평단가에 (0% LOC)</span></div>
+        <div class="kv"><span class="k">키움 주문</span><span class="v">매수 · LOC</span></div>
+      </div>
+    </div>
+
+    <div class="order-card buy">
+      <div class="head">🔵 매수 ② · 별지점</div>
+      <div class="body">
+        <div class="kv"><span class="k">가격 · 수량</span><span class="v b-blue">$164.69 · 2주</span></div>
+        <div class="kv"><span class="k">무슨 뜻</span><span class="v" style="font-weight:400;color:var(--ink-soft)">나머지 <strong style="color:var(--ink)">절반</strong>을 별지점에 (별−0.01)</span></div>
+        <div class="kv"><span class="k">키움 주문</span><span class="v">매수 · LOC</span></div>
+      </div>
+    </div>
+
+    <div class="order-card sell">
+      <div class="head">🔴 매도 ① · 쿼터</div>
+      <div class="body">
+        <div class="kv"><span class="k">가격 · 수량</span><span class="v b-red">$164.70 · 1주</span></div>
+        <div class="kv"><span class="k">무슨 뜻</span><span class="v" style="font-weight:400;color:var(--ink-soft)">가진 것의 <strong style="color:var(--ink)">1/4</strong>을 별지점에서 먼저</span></div>
+        <div class="kv"><span class="k">키움 주문</span><span class="v">매도 · LOC</span></div>
+      </div>
+    </div>
+
+    <div class="order-card sell">
+      <div class="head">🔴 매도 ② · 본</div>
+      <div class="body">
+        <div class="kv"><span class="k">가격 · 수량</span><span class="v b-red">$165.00 · 1주</span></div>
+        <div class="kv"><span class="k">무슨 뜻</span><span class="v" style="font-weight:400;color:var(--ink-soft)">나머지 <strong style="color:var(--ink)">3/4</strong>을 +10% 목표가에 · 팔리면 사이클 종료</span></div>
+        <div class="kv"><span class="k">키움 주문</span><span class="v">매도 · 지정가</span></div>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="lbl">카드 수는 그날그날 달라요</span>
+      <p style="margin:0">화면에 <strong>뜬 카드 수만큼만</strong> 걸면 됩니다. 회차 초반(전반전)엔 보통 <strong>4장</strong>이지만, 많이 사 모은 뒤(후반전)엔 매수가 <strong>1장으로 합쳐져</strong> 3장이 되기도 해요. <strong>첫날(가진 게 0)</strong>이면 매도 카드는 없고 <strong>매수만</strong> 나옵니다. 규칙은 하나 — <strong>“뜬 카드를 그대로 다 건다.”</strong></p>
+    </div>
+  </section>
+
+  <!-- 5. 따라하기 루틴 -->
+  <section>
+    <div class="eyebrow"><div class="num">5</div><h2>오늘 하루, 이 순서대로만 하세요</h2></div>
+    <p class="lead">위 카드를 키움에 옮기는 순서예요. <strong>TQQQ를 먼저 끝내고, SOXL을 똑같이</strong> 한 번 더. 미국 장 마감(한국 새벽) 전이면 <strong>낮에 예약주문으로 미리</strong> 걸어둬도 됩니다.</p>
+
+    <div class="flow">
+      <div class="step">
+        <div class="dot">1</div>
+        <h4>콘솔 열기 → TQQQ 선택</h4>
+        <p>매매기록을 넣어뒀으면 평단·보유수량이 자동으로 채워져요. 아니면 키움 <strong>‘잔고’</strong> 화면의 평단·수량을 콘솔에 입력합니다.</p>
+      </div>
+      <div class="step">
+        <div class="dot">2</div>
+        <h4>오늘 뜬 카드 확인</h4>
+        <p>보통 <strong>매수 2장 · 매도 2장</strong>. 이 숫자(가격·수량)를 이제 키움에 그대로 옮길 거예요.</p>
+      </div>
+      <div class="step">
+        <div class="dot">3</div>
+        <h4>키움 열기 → 주문 화면 가기</h4>
+        <p>키움 앱 → <strong>해외주식 → 미국주식 주문</strong> → 종목 <strong>TQQQ</strong> 검색.</p>
+      </div>
+      <div class="step">
+        <div class="dot">4</div>
+        <h4>🔵 매수 ① 걸기</h4>
+        <p><strong>[매수]</strong> 탭 → 주문유형 <strong>LOC</strong> → 콘솔 매수①의 가격·수량 입력 → <strong>예약주문</strong>.</p>
+        <div class="do">콘솔의 <strong>‘가격 복사’ · ‘수량 복사’</strong> 버튼을 누르고 키움 칸에 <strong>붙여넣기</strong>하면 오타 걱정 없어요.</div>
+      </div>
+      <div class="step">
+        <div class="dot">5</div>
+        <h4>🔵 매수 ② 걸기</h4>
+        <p>다시 <strong>[매수]</strong> 탭 → <strong>LOC</strong> → 콘솔 매수②(별지점)의 가격·수량 입력 → 예약주문.</p>
+      </div>
+      <div class="step">
+        <div class="dot">6</div>
+        <h4>🔴 매도 ① 걸기</h4>
+        <p><strong>[매도]</strong> 탭 → 주문유형 <strong>LOC</strong> → 콘솔 매도①(쿼터)의 가격·수량 입력 → 예약주문.</p>
+      </div>
+      <div class="step">
+        <div class="dot">7</div>
+        <h4>🔴 매도 ② 걸기</h4>
+        <p>다시 <strong>[매도]</strong> 탭 → 주문유형 <strong>지정가</strong> → 콘솔 매도②(본)의 가격·수량 입력 → 예약주문.</p>
+      </div>
+      <div class="step">
+        <div class="dot">8</div>
+        <h4>SOXL로 바꿔서 1~7 똑같이</h4>
+        <p>콘솔에서 종목만 SOXL로 바꾸고, 같은 순서를 한 번 더. (SOXL은 목표가가 +12%예요 — 콘솔이 알아서 반영합니다)</p>
+      </div>
+      <div class="step">
+        <div class="dot">9</div>
+        <h4>다음 날, 체결 확인 후 반복</h4>
+        <p>체결된 게 있으면 콘솔에 기록 → 다시 1번부터. <strong>매도 ②(본)가 팔렸으면</strong> 그 종목은 한 사이클 끝(익절 완료)이라 <strong>처음부터 새로</strong> 시작돼요.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <span class="lbl">용어 한 줄 정리</span>
+      <p style="margin:0"><strong>LOC</strong> = 마감 가격이 내 가격보다 (살 땐) 같거나 싸면 / (팔 땐) 같거나 비싸면 체결. · <strong>지정가</strong> = 그 가격이 되면 체결. · <strong>예약주문</strong> = 장 열기 전 낮에 미리 걸어두기. 어떤 카드를 LOC로, 어떤 걸 지정가로 걸지는 <strong>콘솔 카드에 적혀 나오니</strong> 그대로 따르면 됩니다.</p>
+    </div>
+  </section>
+
+  <!-- 6. 콘솔 -->
+  <section>
+    <div class="eyebrow"><div class="num">6</div><h2>콘솔 화면, 이 정도만 보면 돼요</h2></div>
+    <ul class="dot">
+      <li><strong>★ 별지점</strong> — 오늘 사고팔 기준 가격. (자동 계산됨)</li>
+      <li><strong>매수가 · 매수 수량</strong> — 키움에 LOC로 넣을 값.</li>
+      <li><strong>매도가 · 매도 수량</strong> — 키움에 지정가/LOC로 넣을 값.</li>
+      <li><strong>회차(T) 게이지</strong> — 40번 중 지금 몇 번째인지 보여줘요. 끝에 가까우면 “많이 사 모은 상태”라는 뜻. 참고만 하면 돼요.</li>
+      <li><strong>평가손익 · 수익률</strong> — 지금 얼마 벌었는지/잃었는지. 마음 편히 보세요. 빨강·파랑으로 한눈에 보여요.</li>
+    </ul>
+    <div class="note">
+      <span class="lbl">어려운 공식은 안 외워도 돼요</span>
+      <p style="margin:0">버전 2.2는 ‘별지점’을 매일 살짝 바꿔가며 사고파는 방식인데, 그 계산을 <strong>콘솔이 전부 대신</strong> 합니다. 당신이 할 일은 <strong>콘솔이 준 숫자를 키움에 옮기는 것</strong>, 그게 전부예요.</p>
+    </div>
+  </section>
+
+  <!-- 7. 안전수칙 -->
+  <section>
+    <div class="eyebrow"><div class="num">7</div><h2>이것만은 꼭 — 안전 수칙</h2></div>
+    <div class="warn">
+      <span class="lbl">절대 하지 말 것</span>
+      <ul class="dot" style="margin:6px 0 0">
+        <li style="color:#7E261B"><strong style="color:#7E261B">무서워서 갑자기 다 팔기 / 욕심나서 한 번에 크게 사기</strong> — 규칙이 깨지면 이 방법의 장점이 사라져요.</li>
+        <li style="color:#7E261B"><strong style="color:#7E261B">빚내서 / 생활비로 투자하기</strong> — 없어도 괜찮은 ‘여윳돈’으로만 하세요.</li>
+        <li style="color:#7E261B"><strong style="color:#7E261B">매일 차트 들여다보며 마음 졸이기</strong> — 주문만 걸어두면 할 일 끝. 신경 끄고 지내도 돼요.</li>
+      </ul>
+    </div>
+    <p style="font-size:15px;color:var(--ink-soft)">TQQQ·SOXL은 3배로 움직이는 종목이라, 시장이 길게 내리면 <strong>40번을 다 사 모은 뒤에도 한동안 마이너스</strong>일 수 있어요(이걸 ‘소진’이라고 해요). 그래도 당황하지 말고 <strong>콘솔이 시키는 대로</strong>만 하면 됩니다. 이 방법은 천천히 회복하며 이익을 쌓는 구조예요. 한 방을 노리는 게 아니라, <strong>꾸준함으로 이기는 방법</strong>입니다.</p>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section style="border-bottom:none">
+    <div class="eyebrow"><div class="num">8</div><h2>자주 묻는 질문</h2></div>
+
+    <details>
+      <summary>매일 꼭 해야 하나요? 하루 빼먹으면요?</summary>
+      <div class="ans">하루쯤 빠져도 큰일 나지 않아요. 그날 안 사고 넘어간 셈이 됩니다. 다만 가능하면 매일 거는 게 평균 가격을 고르게 만들어줘서 좋아요. ‘예약주문’으로 낮에 미리 걸어두면 빠뜨릴 일이 거의 없습니다.</div>
+    </details>
+    <details>
+      <summary>매수가 안 됐어요. 뭔가 잘못한 건가요?</summary>
+      <div class="ans">아니에요. LOC는 ‘마감 가격이 비싸면 안 사는’ 주문이라, 그날 안 사는 게 정상일 때가 많아요. 못 산 날은 그냥 다음 날 다시 콘솔대로 걸면 됩니다.</div>
+    </details>
+    <details>
+      <summary>지금 마이너스인데 괜찮은 건가요?</summary>
+      <div class="ans">처음엔 마이너스가 자연스러워요. 떨어질 때 더 사 모아서 평균 가격을 낮추는 게 이 방법의 핵심이거든요. 오르기 시작하면 회복이 빠릅니다. 규칙만 지키세요.</div>
+    </details>
+    <details>
+      <summary>두 종목을 따로따로 해야 하나요?</summary>
+      <div class="ans">네, TQQQ와 SOXL은 각각 따로 굴러가요. 매일 콘솔에서 종목을 바꿔가며 같은 순서를 두 번 하면 됩니다. 콘솔이 종목별로 따로 계산·기록해줘요.</div>
+    </details>
+    <details>
+      <summary>한 사이클이 끝나면(다 팔리면) 어떻게 해요?</summary>
+      <div class="ans">축하해요, 이익을 챙긴 거예요. 그럼 처음 ‘첫날’ 상태로 돌아가서 다시 1회분부터 사 모으기 시작하면 됩니다. 이 반복이 무한매수예요.</div>
+    </details>
+  </section>
+
+  <footer class="footer">
+    <p><strong>이 설명서는 ‘무한매수 콘솔’과 함께 쓰는 개인용 안내서입니다.</strong> 무한매수법은 라오어님이 공개한 방법론(V2.2)을 따른 것이며, 이 글은 본인 운용을 돕기 위한 정리입니다.</p>
+    <p>모든 투자는 원금 손실이 생길 수 있고, 최종 판단과 책임은 투자자 본인에게 있습니다. 이 자료는 투자 권유나 금융 자문이 아닙니다. 헷갈릴 땐 혼자 끙끙대지 말고 남편에게 물어보세요. 천천히, 규칙대로. ★</p>
+  </footer>
+
+</div>
+</body>
+</html>
